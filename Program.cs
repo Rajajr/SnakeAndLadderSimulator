@@ -10,10 +10,18 @@ namespace SnakeAndLadderSimulator
     {
         static void Main(string[] args)
         {
-            //UC-1 Snake and Ladder game played with single player at start position 0
+            //UC-2 Player rolls the die to get a number between 1 to 6
             Console.WriteLine("Welcome to Snake And Ladder Game");
+            Console.WriteLine("Player");
+            //variables
             var Player =0;
-            Console.WriteLine("Player Starting Position:"+Player);
+            var Die = 0;
+            //randomcheck 
+            Random random = new Random();
+            //range from 1 to 6
+            Die=random.Next(1,7);
+            Console.WriteLine("Roll the die");
+            Console.WriteLine("Number:{0}",Die);
             Console.ReadLine();
         }
     }
