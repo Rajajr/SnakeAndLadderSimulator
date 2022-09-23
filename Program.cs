@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SnakeAndLadderSimulator
@@ -10,13 +11,14 @@ namespace SnakeAndLadderSimulator
     {
         static void Main(string[] args)
         {
-            //UC-3 The Player Checks For a Option Whether Ladder,Snake or No Play
+            //UC-5 The Player gets Exact Winning Position 100
             Console.WriteLine("Welcome to Snake And Ladder Game");
             Console.WriteLine("Player1");
             //variables
             var Player1 =0;
             var Die = 0;
             var Option = 0;
+            var Num=0;
 
             //constant
             const int Ladder = 1;
@@ -25,30 +27,44 @@ namespace SnakeAndLadderSimulator
 
             //randomcheck 
             Random random = new Random();
-            //range from 1 to 6
-            Die=random.Next(1,7);
-            Console.WriteLine("Die Number:{0}",Die);
-
-            Option=random.Next(0,3);
-            Console.WriteLine("Player1 Option: {0}",Option);
-
-            switch (Option)
+            while(Player1 < 100)
             {
-                case Ladder:
-                    Console.WriteLine("Ladder");
-                    Console.WriteLine("Position: {0} ",Player1);
-                break;
+                //range from 1 to 6
+                Die = random.Next(1, 7);
+                Console.WriteLine("Die Number:{0}", Die);
+                Option = random.Next(0, 3);
+                Console.WriteLine("Player1 Option: {0}", Option);
 
-                case Snake:
-                    Console.WriteLine("Snake");
-                    Console.WriteLine("position: {0}",Player1);
-                    break;
-                case No_Play:
-                    Console.WriteLine("No Play");
-                    Console.WriteLine("position: {0}", Player1);
-                    break;   
+                switch (Option)
+                {
+                    case Ladder:
+                        Player1=Player1 + Die;
+                        if (Player1 > 100)
+                            Player1 = Player1 - Die;
+                        else if(Player1==100)
+                        Console.WriteLine("Player Won : {0}",Player1);
+                        Console.WriteLine("Ladder");
+                        Console.WriteLine("Position : {0} ", Player1);
+                        break;
+
+                    case Snake:
+                        Player1 = Player1 - Die;
+                        if (Player1<0)
+                        {
+                            Player1=0;
+                        }
+                        Console.WriteLine("Snake");
+                        Console.WriteLine("position: {0}", Player1);
+                        break;
+                    case No_Play:
+                        Console.WriteLine("No Play");
+                        Console.WriteLine("position: {0}", Player1);
+                        break;
+                }
+
+                Num++;
+
             }
-
             Console.ReadLine();
         }
     }
