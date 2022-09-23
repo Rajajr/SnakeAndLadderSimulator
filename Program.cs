@@ -11,7 +11,7 @@ namespace SnakeAndLadderSimulator
     {
         static void Main(string[] args)
         {
-            //UC-5 The Player gets Exact Winning Position 100
+            //UC-4 Repeat till the Player Reaches the Winning Position 100
             Console.WriteLine("Welcome to Snake And Ladder Game");
             Console.WriteLine("Player1");
             //variables
@@ -39,10 +39,6 @@ namespace SnakeAndLadderSimulator
                 {
                     case Ladder:
                         Player1=Player1 + Die;
-                        if (Player1 > 100)
-                            Player1 = Player1 - Die;
-                        else if(Player1==100)
-                        Console.WriteLine("Player Won : {0}",Player1);
                         Console.WriteLine("Ladder");
                         Console.WriteLine("Position : {0} ", Player1);
                         break;
